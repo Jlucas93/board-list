@@ -1,11 +1,11 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 
 export default function useTheme(initialValue: any) {
 
-  const [state, setState] = React.useState(initialValue)
+  const [state, setState] = useState(initialValue)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const { theme } = parseCookies()
     if (theme) {
       setState(JSON.parse(theme))

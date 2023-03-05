@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import type { AppProps } from 'next/app'
-
+import { parseCookies} from 'nookies'
 import useTheme from 'hooks/useTheme'
 import GlobalStyle from 'styles/GlobalStyle'
 import dark from 'styles/themes/dark'
@@ -15,6 +15,13 @@ export default function App({ Component, pageProps }: AppProps) {
   const toggleTheme = React.useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light)
   }, [theme])
+
+  useEffect(() => {
+    const { theme } = parseCookies()
+    if (!theme) {
+      setTheme(dark)
+    }
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
