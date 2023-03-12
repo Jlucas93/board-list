@@ -8,6 +8,7 @@ declare module 'styled-components' {
       secondary: string;
       terciary: String;
     },
+    header: string,
     background: string;
     text: string;
   }

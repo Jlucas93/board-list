@@ -17,7 +17,16 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root { 
     height: 100%;
     width:100%;
-    font-size:16px;
+    font: 400 1rem sans-serif;
+  }
+
+  button {
+    cursor:pointer;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
   }
 
 

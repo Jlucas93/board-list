@@ -5,7 +5,8 @@ export default {
     secondary: '#ff0000',
     terciary: '#f1db4b',
   },
-  background: '#202020',
+  header: '#3e3e3e',
+  background: '#323031',
   text: '#ffffff',
 
 } 

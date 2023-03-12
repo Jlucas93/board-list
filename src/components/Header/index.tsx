@@ -21,7 +21,12 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
   }, [])
   return (
     <S.Header >
-      Hello
+      <img src='/images/logo.svg' />
+      <S.NavigationLinks> 
+        <a>Home</a>
+        <a>My Board</a>
+      </S.NavigationLinks>
+      <button><Icons.Github />Login</button>
       {isLoading ? (
         <Switch
           onChange={toggleTheme}
@@ -39,9 +44,10 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           height={40}
           width={80}
           handleDiameter={20}
-          offColor={theme.background}
-          onColor={theme.background}
+          offColor={theme.colors.primary}
+          onColor={theme.colors.primary}
         />
+
       ) : null}
 
     </S.Header>
