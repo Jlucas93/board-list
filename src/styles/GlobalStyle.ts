@@ -14,10 +14,9 @@ const GlobalStyle = createGlobalStyle`
     background-color:${({ theme }) => theme.background};
   }
   
-  html, body, #root { 
-    height: 100%;
-    width:100%;
-    font: 400 1rem sans-serif;
+  html{ 
+
+    font-family: "Roboto", sans-serif;
   }
 
   button {
@@ -28,7 +27,6 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
-
 
 `;
 

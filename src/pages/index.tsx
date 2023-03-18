@@ -1,17 +1,8 @@
-import Head from "next/head"
+import HomePage from "components/Home"
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-      <div>
-        <h1>
-          Hello world
-        </h1>
-      </div>
-    </>
 
+    <HomePage />
   )
 }

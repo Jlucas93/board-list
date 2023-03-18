@@ -7,15 +7,39 @@ export const Header = styled.header`
   color: ${({ theme }) => theme.text};
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
+  justify-content: center;
 `
-export const NavigationLinks = styled.div`
+
+export const Content = styled.section`
+  padding: 0 1rem;
+  width: 100%;
   display: flex;
+  align-items:center;
   justify-content: space-between;
-  align-items: center;
-  width: 10rem;
+
 `
+export const Nav = styled.nav`
+  width: 30%;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+`
+export const Login = styled.button`
+  background: transparent;
+  padding: .5rem 2rem;
+  border-radius: 1.3rem;
+  color: ${({ theme }) => theme.text};
+  border: 1.5px  solid ${({ theme }) => theme.text};
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.text};
+    border: 1.5px  solid ${({ theme }) => theme.text};
+  }
+`
+
 export const ThemeSwitch = styled.div`
   display: flex;
   justify-content: center;
