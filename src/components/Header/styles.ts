@@ -19,10 +19,10 @@ export const Content = styled.section`
 
 `
 export const Nav = styled.nav`
-  width: 30%;
+  width: 45%;
   display: flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content: right;
 `
 export const Login = styled.button`
   background: transparent;
@@ -30,10 +30,10 @@ export const Login = styled.button`
   border-radius: 1.3rem;
   color: ${({ theme }) => theme.text};
   border: 1.5px  solid ${({ theme }) => theme.text};
-  transition: transform 0.5s;
+  transition: 0.5s;
+  margin: 0 5px;
 
   &:hover {
-    transform: scale(1.1);
     color: ${({ theme }) => theme.background};
     background-color: ${({ theme }) => theme.text};
     border: 1.5px  solid ${({ theme }) => theme.text};

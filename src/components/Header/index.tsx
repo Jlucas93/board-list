@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import Link from 'next/link'
 import * as S from './styles'
 import * as Icons from 'components/Icons'
-import Link from 'next/link'
 import Switch from 'react-switch'
-import { parseCookies, setCookie } from 'nookies'
+import { parseCookies } from 'nookies'
 import { ThemeContext } from 'styled-components'
 interface Props {
   toggleTheme(): void,
@@ -13,6 +14,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
   const theme = useContext(ThemeContext)
   const [isLoading, setIsLoading] = useState(false)
+  const { data: session, status } = useSession()
 
   useEffect(() => {
     const { theme } = parseCookies()
@@ -28,10 +30,19 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           Daily Tasks
         </Link>
         <S.Nav>
-        <Link href='/dashboard'>
-            My Dashboard
-          </Link>
-          <S.Login>Login</S.Login>
+          {session?.user ? (
+            <Link href='/dashboard'>
+              My Dashboard
+            </Link>
+          ) : null}
+
+          {status === 'loading' ? (
+            null
+          ) : session ? (
+            <S.Login onClick={() => signOut()}>Olá, {session.user?.name}</S.Login>
+          ) :
+            < S.Login onClick={() => signIn('google')}>Login</S.Login>}
+
           {isLoading ? (
             <Switch
               onChange={toggleTheme}
@@ -56,7 +67,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           ) : null}
         </S.Nav>
       </S.Content>
-    </S.Header>
+    </S.Header >
   )
 }
 export default Header

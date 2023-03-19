@@ -1,8 +1,39 @@
-import HomePage from "components/Home"
+import Image from "next/image"
+import Head from "next/head"
+import * as S from "./home/style"
+import homeImage from "assests/hero.png"
 
 export default function Home() {
   return (
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <S.Container>
+        <S.Main>
+          <S.Logo>
+            <Image
+              alt="logo"
+              src={homeImage}
+              priority
+            />
+            <S.SubTitle> Sistema para organizar estudo tarefas</S.SubTitle>
+          </S.Logo>
+          <S.InfoContent>
 
-    <HomePage />
+            <S.Section>
+              <S.Span>
+                +12 posts
+              </S.Span>
+            </S.Section>
+            <S.Section>
+              <S.Span>
+                90 comentatarios
+              </S.Span>
+            </S.Section>
+          </S.InfoContent>
+        </S.Main>
+      </S.Container>
+    </>
   )
 }
