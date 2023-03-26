@@ -25,13 +25,20 @@ export const Nav = styled.nav`
   justify-content: right;
 `
 export const Login = styled.button`
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
   background: transparent;
-  padding: .5rem 2rem;
-  border-radius: 1.3rem;
+  padding: .7rem 2rem;
+  border-radius: 1rem;
   color: ${({ theme }) => theme.text};
   border: 1.5px  solid ${({ theme }) => theme.text};
   transition: 0.5s;
-  margin: 0 5px;
+  margin: 0 10px;
+  max-width: 16rem;  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;   
 
   &:hover {
     color: ${({ theme }) => theme.background};

@@ -7,10 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   height: calc(100vh - 4rem);
 `
-
-export const Main = styled.main`
-
-`
+export const Main = styled.div``
 
 export const Logo = styled.div`
   display: flex;

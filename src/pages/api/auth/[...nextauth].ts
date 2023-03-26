@@ -10,10 +10,10 @@ export const authOptions = {
     })
   ],
   secret: process.env.JWT_SECRET as string,
-  /*   session: {
-      jwt: true,
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    }, */
+  session: {
+    jwt: true,
+    maxAge: 30 * 24 * 60,
+  },
 }
 
 export default NextAuth(authOptions);

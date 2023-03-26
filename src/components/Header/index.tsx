@@ -32,16 +32,16 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
         <S.Nav>
           {session?.user ? (
             <Link href='/dashboard'>
-              My Dashboard
+              Dashboard
             </Link>
           ) : null}
 
           {status === 'loading' ? (
             null
           ) : session ? (
-            <S.Login onClick={() => signOut()}>Olá, {session.user?.name}</S.Login>
+            <S.Login onClick={() => signOut()}>{session.user?.name}</S.Login>
           ) :
-            < S.Login onClick={() => signIn('google')}>Login</S.Login>}
+            < S.Login onClick={() => signIn('google')}>Login <Icons.Google /></S.Login>}
 
           {isLoading ? (
             <Switch
@@ -54,7 +54,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
               }
               uncheckedIcon={
                 <S.ThemeSwitch>
-                  <Icons.DakMode color={theme.text} />
+                  <Icons.DarkMode color={theme.text} />
                 </S.ThemeSwitch>
               }
               height={40}
