@@ -1,19 +1,12 @@
 import * as S from './styles'
 
-interface TextAreaProps {
-  placeholder?: string;
-  rows?: number;
-  value: string;
-  setValue(event: React.ChangeEvent<HTMLTextAreaElement>): void;
-}
+interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { }
 
-const TextArea: React.FC<TextAreaProps> = ({ placeholder, rows, value, setValue }) => {
+const TextArea: React.FC<Props> = ({ ...rest }) => {
   return (
     <S.TextArea
-      value={value}
-      onChange={setValue}
-      rows={rows}
-      placeholder={placeholder} />
+      {...rest}
+    />
   )
 }
 

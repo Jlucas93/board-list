@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next"
-import { useCallback, useState } from "react"
+import { useCallback, useState, useRef } from "react"
 import { getSession } from "next-auth/react"
 import Head from "next/head"
 import * as S from './styles'
@@ -7,21 +7,26 @@ import * as Icons from 'components/Icons'
 import TextArea from "components/TextArea"
 
 export default function Dashboard() {
-  const [task, setTaks] = useState("")
-  const [isPublic, setIsPublic] = useState(false)
 
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTaks(event.target.value);
-  }, [setTaks]);
+  const [isPublic, setIsPublic] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null);
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault()
+    const form = formRef.current;
 
-    if(task === "") return
+    if (!form) return;
 
-    alert("Please enter")
+    const taskInput = form.elements.namedItem('task') as HTMLTextAreaElement;
     
+    if (taskInput.value === '') return alert('Please enter a value')
+
+    alert(taskInput.value)
+
+    form.reset()
+    setIsPublic(false)
   }
+
   return (
     <S.Container>
 
@@ -35,11 +40,13 @@ export default function Dashboard() {
           <S.ContentForm>
 
             <S.Title>Qual sua próxima tarefa?</S.Title>
-            <S.Form onSubmit={handleSubmit}>
+            <S.Form
+              onSubmit={handleSubmit}
+              ref={formRef}
+            >
               <TextArea
                 placeholder={"Qual sua próxima tarefa?"}
-                value={task}
-                setValue={handleChange}
+                name="task"
               />
               <S.InputField>
 
@@ -47,6 +54,7 @@ export default function Dashboard() {
                   type='checkbox'
                   checked={isPublic}
                   onChange={() => setIsPublic(!isPublic)}
+                  name='input2'
                 />
                 <S.Label>Deseja deixar pública?</S.Label>
 
