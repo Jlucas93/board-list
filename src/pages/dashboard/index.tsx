@@ -19,6 +19,7 @@ export default function Dashboard() {
 
     if(task === "") return
 
+    alert("Please enter")
     
   }
   return (
