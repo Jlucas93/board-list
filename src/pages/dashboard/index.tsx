@@ -14,6 +14,13 @@ export default function Dashboard() {
     setTaks(event.target.value);
   }, [setTaks]);
 
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault()
+
+    if(task === "") return
+
+    
+  }
   return (
     <S.Container>
 
@@ -27,7 +34,7 @@ export default function Dashboard() {
           <S.ContentForm>
 
             <S.Title>Qual sua próxima tarefa?</S.Title>
-            <S.Form>
+            <S.Form onSubmit={handleSubmit}>
               <TextArea
                 placeholder={"Qual sua próxima tarefa?"}
                 value={task}
