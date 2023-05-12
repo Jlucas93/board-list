@@ -1,11 +1,31 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom:1rem;
+  line-height: 150%;
+  border: 1.5px solid #909090;
+  border-radius: 4px;
+  padding: 1rem;
+  width: 80%;
+  background-color: ${({ theme }) => theme.header};
+`
+export const Button = styled.button`
   width: 100%;
+  height: 3rem;
+  border: 0;
+  border-radius: .2rem;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: white;
+  font-size: 18px;
 `
 
-export const Main = styled.main`
-
+export const Container = styled.div`
+  width: 100%;
 `
 
 export const content = styled.section`
@@ -17,11 +37,7 @@ export const content = styled.section`
   max-width: 1024px;
   margin: auto;
 `
-export const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-`
+
 export const ContentForm = styled.div`
   width: 100%;
   padding: 0 1rem;
@@ -29,9 +45,12 @@ export const ContentForm = styled.div`
   margin-top: 3.5rem;
 `
 
-export const Form = styled.form`
-
+export const Main = styled.main`  
 `
+
+export const Form = styled.form`
+`
+
 export const InputField = styled.div`
   display: flex;
   align-items: center;
@@ -47,18 +66,6 @@ export const Label = styled.label`
   margin-left: .5rem;
   margin-top: 1rem;
 `
-export const Button = styled.button`
-  width: 100%;
-  height: 3rem;
-  border: 0;
-  border-radius: .2rem;
-  padding: 1rem 0;
-  margin-top: 1rem;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
-  font-size: 18px;
-`
-
 export const TaskContainer = styled.section`
   display: flex;
   align-items:center;
@@ -70,33 +77,14 @@ export const TaskContainer = styled.section`
   padding: 0 1rem;
 `
 
-export const Article = styled.article`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom:1rem;
-  line-height: 150%;
-  border: 1.5px solid #909090;
-  border-radius: 4px;
-  padding: 1rem;
-  width: 80%;
-  background-color: ${({ theme }) => theme.header};
-`
-
-export const TagContainer = styled.div`
-  display: flex;
-  align-items:center;
-  margin-bottom: .5rem;
-`
-export const Tag = styled.label`
-  padding: 2px 6px;
-  border-radius: 4px;
-`
-
 export const ShareButton = styled.button`
   background: transparent;
   border:0;
   margin: 0 .5rem;
+  color: ${({ theme }) => theme.text};
+`
+export const SubTitle = styled.p`
+  font-size: 14px;
   color: ${({ theme }) => theme.text};
 `
 export const TaskContent = styled.div`
@@ -108,12 +96,30 @@ export const TaskContent = styled.div`
   max-width: 100%;
 `
 
+export const TagContainer = styled.div`
+  display: flex;
+  align-items:center;
+  margin-bottom: .5rem;
+`
+export const Tag = styled.label`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: #fff;
+  padding: 2px 6px;
+  margin-right: 5px;
+  border-radius: 4px;
+`
 export const Text = styled.p`
+  color: ${({ theme }) => theme.text};
   white-space: pre-wrap;
 `
+export const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+`
 
-export const trashButton = styled.button`
-  color: ${({ theme }) => theme.text};
+export const TrashButton = styled.button`
+  color: ${({ theme }) => theme.colors.secondary};
   background: transparent;
   border:0;
   margin: 0 .5rem;

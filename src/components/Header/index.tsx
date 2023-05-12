@@ -11,7 +11,6 @@ interface Props {
 }
 const Header: React.FC<Props> = ({ toggleTheme }) => {
 
-
   const theme = useContext(ThemeContext)
   const [isLoading, setIsLoading] = useState(false)
   const { data: session, status } = useSession()
@@ -26,20 +25,22 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
 
     <S.Header >
       <S.Content>
-        <Link href='/'>
-          Daily Tasks
-        </Link>
+        <S.Logo >
+          <Link href='/'>
+            Daily Tasks
+          </Link>
+        </S.Logo>
         <S.Nav>
           {session?.user ? (
             <Link href='/dashboard'>
-              Dashboard
+              Tasks
             </Link>
           ) : null}
 
           {status === 'loading' ? (
             null
           ) : session ? (
-            <S.Login onClick={() => signOut()}>{session.user?.name}</S.Login>
+            <S.Login onClick={() => signOut()}><b>{session.user?.name[0].toUpperCase()}</b></S.Login>
           ) :
             < S.Login onClick={() => signIn('google')}>Login <Icons.Google /></S.Login>}
 
