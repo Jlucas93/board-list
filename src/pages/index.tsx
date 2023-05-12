@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Head from "next/head"
-import * as S from "./home/style"
+import * as S from "components/pages/home/style"
 import homeImage from "assests/hero.png"
 
 export default function Home() {

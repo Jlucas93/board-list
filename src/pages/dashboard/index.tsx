@@ -15,7 +15,7 @@ import {
 } from "firebase/firestore"
 import Head from "next/head"
 import Link from 'next/link'
-import * as S from './styles'
+import * as S from 'components/pages/dashboard/styles'
 import * as Icons from 'components/Icons'
 import TextArea from "components/TextArea"
 import { ToastContainer, toast } from 'react-toastify';

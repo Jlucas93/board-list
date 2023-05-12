@@ -1,8 +1,8 @@
-import { useState, useRef, useContext } from 'react'
+import { useRef, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useSession } from 'next-auth/react';
 import Head from "next/head";
-import * as S from './styles'
+import * as S from 'components/pages/task/styles'
 import { GetServerSideProps } from "next";
 import { db } from '../../services/firebaseConnect'
 import {
@@ -43,7 +43,7 @@ export default function Taks({ item }: Iprops) {
     if (comment_input.value === '') return toast.error("Comentários em brancos não são permitidos!");
     try {
 
-      const comment_ref = await addDoc(
+      await addDoc(
         collection(db, 'comments'), {
         comment: comment_input.value,
         created_at: new Date(),

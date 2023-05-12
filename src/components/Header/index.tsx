@@ -40,7 +40,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           {status === 'loading' ? (
             null
           ) : session ? (
-            <S.Login onClick={() => signOut()}><b>{session.user?.name[0].toUpperCase()}</b></S.Login>
+            <S.Login onClick={() => signOut()}><b>{session?.user?.name ? session?.user?.name[0].toUpperCase() : session?.user?.name}</b></S.Login>
           ) :
             < S.Login onClick={() => signIn('google')}>Login <Icons.Google /></S.Login>}
 
