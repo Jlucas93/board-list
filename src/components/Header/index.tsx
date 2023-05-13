@@ -1,11 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import Link from 'next/link';
 import * as S from './styles';
 import * as Icons from 'components/Icons';
 import Switch from 'react-switch';
 import { parseCookies } from 'nookies';
 import { ThemeContext } from 'styled-components';
+import {
+  addDoc,
+  collection,
+  doc,
+  deleteDoc,
+  orderBy,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore"
+import { db } from 'services/firebaseConnect'
 
 interface Props {
   toggleTheme(): void;
@@ -17,6 +27,11 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
   const { data: session, status } = useSession();
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const handleMenu = useCallback(() => {
+    setIsNavOpen(!isNavOpen);
+  }, [isNavOpen])
+
+
   useEffect(() => {
     const { theme } = parseCookies();
     if (theme) {
@@ -24,14 +39,11 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
     }
   }, []);
 
-  const handleMenuToggle = () => {
-    setIsNavOpen(!isNavOpen);
-  };
 
   return (
     <S.Header>
       <S.Content>
-        <S.MenuToggle onClick={handleMenuToggle}>
+        <S.MenuToggle onClick={handleMenu}>
           <Icons.Menu />
         </S.MenuToggle>
         <S.Nav show={isNavOpen}>
@@ -48,7 +60,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
             </S.Login>
           ) : (
             <S.Login onClick={() => signIn('google')}>
-              Login <Icons.Google />
+              Login
             </S.Login>
           )}
         </S.Nav>
@@ -66,7 +78,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           />
         ) : null}
       </S.Content>
-    </S.Header>
+    </S.Header >
   );
 };
 

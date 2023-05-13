@@ -66,4 +66,5 @@ export const Section = styled.section`
   }
 `
 export const Span = styled.span`
+cursor: default;
 `

@@ -35,7 +35,7 @@ export const Nav = styled.nav<{ show: boolean }>`
     align-items: flex-end;
     padding: 1rem;
     opacity: ${({ show }) => (show ? 1 : 0)};
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     visibility: ${({ show }) => (show ? "visible" : "hidden")};
     transform: translateY(${({ show }) => (show ? "0" : "-100%")});
   }
@@ -75,13 +75,13 @@ export const Login = styled.button`
   align-items: center;
   justify-content: center;
   background: transparent;
-  padding: 0.7rem 2rem;
-  border-radius: 1rem;
+  height:2rem;
   color: ${({ theme }) => theme.text};
   border: 1.5px solid ${({ theme }) => theme.text};
+  border-radius: 50px;
+  width: 4.5rem;
   transition: 0.5s;
   margin: 0 10px;
-  width: 2rem;
 
   &:hover {
     color: ${({ theme }) => theme.background};

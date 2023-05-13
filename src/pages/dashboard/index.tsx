@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect, useCallback } from "react"
 import { ThemeContext } from 'styled-components'
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/react"
-import { db } from '../../services/firebaseConnect'
+import { db } from 'services/firebaseConnect'
 import {
   addDoc,
   collection,
@@ -76,6 +76,7 @@ export default function Dashboard({ user }: Iuser) {
     }
 
   }
+  
   const handleEdit = useCallback((task: Itasks) => {
     console.log('dentro do submit', task)
     setEditTask(task)
