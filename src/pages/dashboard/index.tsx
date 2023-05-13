@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect } from "react"
+import { useState, useRef, useContext, useEffect, useCallback } from "react"
 import { ThemeContext } from 'styled-components'
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/react"
@@ -18,6 +18,7 @@ import Link from 'next/link'
 import * as S from 'components/pages/dashboard/styles'
 import * as Icons from 'components/Icons'
 import TextArea from "components/TextArea"
+import Editask from "components/EditTask"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,15 +33,19 @@ interface Itasks {
   username: string;
   task: string;
   public: boolean;
-  created_at: number;
+  created_at: Date;
+  updated_at: Date | null;
 }
 
 export default function Dashboard({ user }: Iuser) {
 
   const theme = useContext(ThemeContext)
-  const [isPublic, setIsPublic] = useState(false)
-  const [tasks, setTasks] = useState<Itasks[]>([])
   const formRef = useRef<HTMLFormElement>(null);
+  const [tasks, setTasks] = useState<Itasks[]>([])
+  const [isPublic, setIsPublic] = useState(false)
+
+  const [openModal, setOpenModal] = useState(false)
+  const [editTask, setEditTask] = useState<Itasks>()
 
   async function shareTask(id: string) {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}`)
@@ -54,7 +59,7 @@ export default function Dashboard({ user }: Iuser) {
 
     const taskInput = form.elements.namedItem('task') as HTMLTextAreaElement;
 
-    if (taskInput.value === '') return toast.error("Não é possível criar tarefa sem conteúdo!");
+    if (taskInput.value === '') return toast.error("Não é possível criar tarefa em branco!");
     try {
       await addDoc(collection(db, "tasks"), {
         task: taskInput.value,
@@ -71,6 +76,11 @@ export default function Dashboard({ user }: Iuser) {
     }
 
   }
+  const handleEdit = useCallback((task: Itasks) => {
+    console.log('dentro do submit', task)
+    setEditTask(task)
+    setOpenModal(true)
+  }, [editTask, openModal])
 
   async function deleteTask(id: string) {
     const task_ref = doc(db, 'tasks', id)
@@ -81,6 +91,7 @@ export default function Dashboard({ user }: Iuser) {
       toast.error("Erro ao deletar tarefa");
     }
   }
+
   useEffect(() => {
     async function getTasks() {
 
@@ -100,7 +111,9 @@ export default function Dashboard({ user }: Iuser) {
             username: task.data().user,
             task: task.data().task,
             public: task.data().public,
-            created_at: task.data().created_at.seconds * 1000,
+            created_at: new Date(task.data().created_at.seconds * 1000),
+            updated_at: task.data().updated_at ?
+              new Date(task.data().created_at.seconds * 1000) : null,
           })
         })
 
@@ -118,7 +131,7 @@ export default function Dashboard({ user }: Iuser) {
         <title>Dashboard</title>
       </Head>
       <S.Main>
-        <S.content>
+        <S.Content>
           <S.ContentForm>
             <S.Title>Qual sua próxima tarefa?</S.Title>
             <S.Form
@@ -135,7 +148,6 @@ export default function Dashboard({ user }: Iuser) {
                   type='checkbox'
                   checked={isPublic}
                   onChange={() => setIsPublic(!isPublic)}
-                  name='input2'
                 />
                 <S.Label>Deseja deixar pública?</S.Label>
 
@@ -143,7 +155,7 @@ export default function Dashboard({ user }: Iuser) {
               <S.Button type="submit"> Cadastrar tarefa</S.Button>
             </S.Form>
           </S.ContentForm>
-        </S.content>
+        </S.Content>
 
         <S.TaskContainer>
           <S.Title>Minhas tarefas</S.Title>
@@ -158,13 +170,13 @@ export default function Dashboard({ user }: Iuser) {
                     <Icons.Share />
                   </S.ShareButton>
                   <S.SubTitle>
-                    {new Date(task.created_at).toLocaleDateString()}
+                    {task.created_at.toLocaleDateString()}
                   </S.SubTitle>
                 </S.TagContainer>
                 :
                 <S.TagContainer>
                   <S.SubTitle>
-                    {new Date(task.created_at).toLocaleDateString()}
+                    {task.created_at.toLocaleDateString()}
                   </S.SubTitle>
                 </S.TagContainer>
               }
@@ -177,17 +189,34 @@ export default function Dashboard({ user }: Iuser) {
                   :
                   <S.Text>{task.task}</S.Text>
                 }
-                <S.TrashButton onClick={() => deleteTask(task.id)}>
-                  <Icons.Trash />
-                </S.TrashButton>
+                <S.Actions>
+                  <S.DeleteButton onClick={() => deleteTask(task.id)}>
+                    <Icons.Trash />
+                  </S.DeleteButton>
+                  <S.EditButton
+                    onClick={() => handleEdit(task)} >
+                    <Icons.Pen />
+                  </S.EditButton>
+                </S.Actions>
               </S.TaskContent>
+              {task.updated_at ?
+                <S.FadeTitle>
+                  Editado em : {task.updated_at.toLocaleDateString()}
+                </S.FadeTitle>
+                : null}
             </S.Article>
           )) : null}
-
         </S.TaskContainer>
-
       </S.Main>
-    </S.Container>
+
+      {editTask ?
+        <Editask
+          isOpen={openModal}
+          task={editTask}
+          onClose={() => setOpenModal(false)} />
+        : null}
+
+    </S.Container >
 
   )
 }

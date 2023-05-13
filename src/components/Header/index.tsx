@@ -27,14 +27,21 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
       <S.Content>
         <S.Logo >
           <Link href='/'>
-            Daily Tasks
+            Home
           </Link>
         </S.Logo>
         <S.Nav>
           {session?.user ? (
-            <Link href='/dashboard'>
-              Tasks
-            </Link>
+            <>
+              <Link 
+                style={{marginRight: '5px'}}
+              href='/dashboard'>
+                Tasks
+              </Link>
+              <Link href='/dashboard'>
+                Users
+              </Link>
+            </>
           ) : null}
 
           {status === 'loading' ? (

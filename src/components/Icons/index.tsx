@@ -3,13 +3,34 @@ import { Svg } from './style'
 type SVGProps = React.SVGAttributes<SVGElement>
 
 
+export const Close = (props: SVGProps) => (
+  <Svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+    </path>
+  </Svg>
+)
 export const DarkMode = (props: SVGProps) => (
   <Svg
     viewBox="0 0 24 24"
     fill="currentColor"
-    {...props} >
+    {...props}
+  >
     <path
       d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z">
+    </path>
+  </Svg>
+)
+export const Pen = (props: SVGProps) => (
+  <Svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
     </path>
   </Svg>
 )

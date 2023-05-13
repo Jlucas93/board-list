@@ -17,7 +17,7 @@ export default function Home() {
               src={homeImage}
               priority
             />
-            <S.SubTitle> Sistema para organizar estudo tarefas</S.SubTitle>
+            <S.SubTitle> Sistema para organizar estudo e tarefas</S.SubTitle>
           </S.Logo>
           <S.InfoContent>
 

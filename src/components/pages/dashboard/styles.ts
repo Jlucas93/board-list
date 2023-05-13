@@ -12,6 +12,11 @@ export const Article = styled.article`
   width: 80%;
   background-color: ${({ theme }) => theme.header};
 `
+export const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items:center;
+`
 export const Button = styled.button`
   width: 100%;
   height: 3rem;
@@ -28,7 +33,7 @@ export const Container = styled.div`
   width: 100%;
 `
 
-export const content = styled.section`
+export const Content = styled.section`
   display: flex;
   align-items:center;
   justify-content: center;
@@ -43,6 +48,19 @@ export const ContentForm = styled.div`
   padding: 0 1rem;
   padding-bottom: 2rem;
   margin-top: 3.5rem;
+`
+
+export const DeleteButton = styled.button`
+  color: ${({ theme }) => theme.colors.secondary};
+  background: transparent;
+  border:0;
+  margin: 0 .5rem;
+`
+export const EditButton = styled.button`
+  color: ${({ theme }) => theme.colors.terciary};
+  background: transparent;
+  border:0;
+  margin: 0 .5rem;
 `
 
 export const Main = styled.main`  
@@ -87,6 +105,11 @@ export const SubTitle = styled.p`
   font-size: 14px;
   color: ${({ theme }) => theme.text};
 `
+export const FadeTitle = styled.p`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.primary};
+`
+
 export const TaskContent = styled.div`
   display: flex;
   flex-direction: row;
@@ -118,9 +141,3 @@ export const Title = styled.h1`
   margin-top: 1rem;
 `
 
-export const TrashButton = styled.button`
-  color: ${({ theme }) => theme.colors.secondary};
-  background: transparent;
-  border:0;
-  margin: 0 .5rem;
-`
