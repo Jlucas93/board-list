@@ -76,7 +76,7 @@ export default function Dashboard({ user }: Iuser) {
     }
 
   }
-  
+
   const handleEdit = useCallback((task: Itasks) => {
     console.log('dentro do submit', task)
     setEditTask(task)
@@ -241,3 +241,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     }
   }
 }
+
