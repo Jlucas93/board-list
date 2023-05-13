@@ -24,16 +24,7 @@ export const DarkMode = (props: SVGProps) => (
     </path>
   </Svg>
 )
-export const Pen = (props: SVGProps) => (
-  <Svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    {...props}
-  >
-    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
-    </path>
-  </Svg>
-)
+
 export const Google = (props: SVGProps) => (
   <Svg
     viewBox="0 0 24 24"
@@ -54,6 +45,26 @@ export const LightMode = (props: SVGProps) => (
     </path>
   </Svg>
 )
+export const Menu = (props: SVGProps) => (
+  <Svg viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}>
+    <path d="M3 18h13v-2H3v2zm0-5h10v-2H3v2zm0-7v2h13V6H3zm18 9.59L17.42 12 21 8.41 19.59 7l-5 5 5 5L21 15.59z">
+    </path>
+  </Svg>
+)
+
+export const Pen = (props: SVGProps) => (
+  <Svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
+    </path>
+  </Svg>
+)
+
 export const Share = (props: SVGProps) => (
   <Svg
     viewBox="0 0 24 24"
