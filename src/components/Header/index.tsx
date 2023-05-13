@@ -51,7 +51,6 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
             <>
               <S.MenuItem href="/">Home</S.MenuItem>
               <S.MenuItem href="/dashboard">Tasks</S.MenuItem>
-              <S.MenuItem href="/dashboard">Users</S.MenuItem>
             </>
           ) : null}
           {status === 'loading' ? null : session ? (
