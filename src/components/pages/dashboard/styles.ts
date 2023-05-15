@@ -57,7 +57,7 @@ export const DeleteButton = styled.button`
   margin: 0 .5rem;
 `
 export const EditButton = styled.button`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.text};
   background: transparent;
   border:0;
   margin: 0 .5rem;
