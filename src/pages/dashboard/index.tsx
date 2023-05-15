@@ -49,6 +49,7 @@ export default function Dashboard({ user }: Iuser) {
 
   async function shareTask(id: string) {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}`)
+    toast.success("Link copiado!")
   }
 
   async function handleSubmit(event: React.FormEvent) {

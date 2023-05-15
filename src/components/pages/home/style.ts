@@ -55,9 +55,6 @@ export const Section = styled.section`
   border-radius: .3rem;
   transition: transform 0.4s;
 
-  &:hover{
-    transform: scale(1.08);
-  }
 
   @media screen and (max-width: 580px) {
     width: 80%;

@@ -35,7 +35,7 @@ export default function Home({ tasks, comments }: Iprops) {
             </S.Section>
             <S.Section>
               <S.Span>
-                {comments} comentatários
+                {comments} comentários
               </S.Span>
             </S.Section>
           </S.InfoContent>
