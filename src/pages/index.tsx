@@ -24,7 +24,7 @@ export default function Home({ tasks, comments }: Iprops) {
               src={homeImage}
               priority
             />
-            <S.SubTitle> Sistema para organizar estudo e tarefas</S.SubTitle>
+            <S.SubTitle> Sistema para organizar seus estudos e tarefas</S.SubTitle>
           </S.Logo>
           <S.InfoContent>
 
